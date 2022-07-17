@@ -106,6 +106,8 @@ public class GUI{
 
 		frame.add(loginRegisterPanel);
 		frame.pack();
+		frame.setSize(400, 500);
+		frame.setResizable(false);
 		frame.setVisible(true);
 	}
 
@@ -314,6 +316,7 @@ public class GUI{
 		rankingPanel.add(back, c);
 
 		frame.add(rankingPanel);
+		SwingUtilities.updateComponentTreeUI(frame);
 	}
 
 	public void loadFavPanel() {
