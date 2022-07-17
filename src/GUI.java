@@ -76,7 +76,7 @@ public class GUI{
 		loginRegisterPanel = new JPanel();
 
 
-		Image tempImage = new ImageIcon("book.jpg").getImage().getScaledInstance(250, 170, java.awt.Image.SCALE_SMOOTH);
+		Image tempImage = new ImageIcon("src/book.jpg").getImage().getScaledInstance(250, 170, java.awt.Image.SCALE_SMOOTH);
 		JLabel bookImageLabel = new JLabel(new ImageIcon(tempImage));
 		bookImagePanel.add(bookImageLabel);
 
@@ -87,7 +87,7 @@ public class GUI{
 
 		c.gridx = 0;
 		c.gridy = 0;
-		titleLabel = new JLabel(" NYT Bestselling Books");
+		titleLabel = new JLabel("NYT Bestselling Books");
 		titleLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 36));
 		loginRegisterPanel.add(titleLabel, c);
 
@@ -139,6 +139,7 @@ public class GUI{
 			manager.setListType(listType);
 			manager.setDate("current");
 			String URL = "https://api.nytimes.com/svc/books/v3/lists/current/" + listType + "/.json?api-key=xj0oVh9V5UmFkZ4QhnrSDNR9PDbtTPOr";
+			manager.clearList();
 			String json = Networking.makeAPICall(URL);
 			Networking.parseJSON(json, manager.getBestSellerList());
 			loadRankingPanel();
@@ -150,6 +151,7 @@ public class GUI{
 			String date = JOptionPane.showInputDialog("Enter the date in the format yyyy-mm-dd");
 			manager.setDate(date);
 			String URL = "https://api.nytimes.com/svc/books/v3/lists/" + date + "/" + listType + "/.json?api-key=xj0oVh9V5UmFkZ4QhnrSDNR9PDbtTPOr";
+			manager.clearList();
 			String json = Networking.makeAPICall(URL);
 			Networking.parseJSON(json, manager.getBestSellerList());
 			loadRankingPanel();

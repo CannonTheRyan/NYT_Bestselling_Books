@@ -8,6 +8,9 @@ public class BookManager {
         bestSellerList = new ArrayList<Book>();
     }
 
+    public void clearList(){
+        bestSellerList.clear();
+    }
 
     public String getDate() {
         return date;
